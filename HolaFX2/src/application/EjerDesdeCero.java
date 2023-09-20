@@ -2,6 +2,7 @@ package application;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
@@ -19,21 +20,30 @@ public class EjerDesdeCero extends Application{
 	public void start(Stage escenario) throws Exception{
 		Text mensaje = new Text("");
 		Button aceptarBtn = new Button("Hola");
+		Button cerrarBtn = new Button("Cerrar");
 		TextField textField = new TextField();
 		aceptarBtn.setOnAction(event -> {
 			if (textField.getText().equals("Obi wan")) {
-				mensaje.setText("¡General Kenobi!");
+				Alert alert = new Alert(Alert.AlertType.WARNING);
+			    alert.setHeaderText(null);
+			    alert.setTitle("Info");
+			    alert.setContentText("¡General Kenobi!");
+			    alert.showAndWait();
 			}else {
 				mensaje.setText("Hola "+textField.getText());
 			}
 		});
-		
+		cerrarBtn.setOnAction(event -> {
+			System.exit(0);
+		});
 		VBox raiz = new VBox();
 		raiz.getChildren().add(textField);
 		raiz.getChildren().add(aceptarBtn);
 		raiz.getChildren().add(mensaje);
+		raiz.getChildren().add(cerrarBtn);
 		Scene escena = new Scene(raiz, 300, 100);
-		escenario.setTitle("HolaFX Aplicacion");
+		escenario.setResizable(false);
+		escenario.setTitle("Ejercicio desde cero");
 		escenario.setScene(escena);
 		escenario.show();
 	}
