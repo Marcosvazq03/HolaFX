@@ -15,8 +15,6 @@ public class EjerDesdeCero extends Application{
 		launch(args);
 	}
 
-	
-
 	public void start(Stage escenario) throws Exception{
 		Text mensaje = new Text("");
 		Button aceptarBtn = new Button("Hola");
@@ -45,6 +43,8 @@ public class EjerDesdeCero extends Application{
 		escenario.setResizable(false);
 		escenario.setTitle("Ejercicio desde cero");
 		escenario.setScene(escena);
+		String url = getClass().getResource("resources/css/buttonstyles.css").toString();
+		escena.getStylesheets().add(url);
 		escenario.show();
 	}
 	
